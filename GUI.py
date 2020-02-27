@@ -10,6 +10,7 @@ from matplotlib.figure import Figure
 fields = ('Acceleration in the X-Direction', 'Acceleration in the Y-Direction', 'Initial Velocity', 'Initial Angle')
 
 
+# Physics for Kinematic Equations:
 def kinematics(entries):
     acceleration_x = (float(entries['Acceleration in the X-Direction'].get()))  # m/s^2
     acceleration_y = (float(entries['Acceleration in the Y-Direction'].get()))  # m/s^2
