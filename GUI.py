@@ -1,5 +1,5 @@
-# Andrew Caulkins
-# Interactive GUI for Simple Kinematics based Physics Questions
+## Andrew Caulkins
+## Interactive GUI for Simple Kinematics based Physics Questions
 
 import numpy as np
 import tkinter as tk
@@ -59,7 +59,7 @@ def makeform(root, fields):
                  fill=tk.X)
         entries[field] = ent
     return entries
-    
+
 # Adding the plotting functionality:
 if __name__ == '__main__':
     root = tk.Tk()
