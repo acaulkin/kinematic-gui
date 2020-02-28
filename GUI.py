@@ -10,7 +10,7 @@ from matplotlib.figure import Figure
 fields = ('Acceleration in the X-Direction', 'Acceleration in the Y-Direction', 'Initial Velocity', 'Initial Angle')
 
 
-# Physics for Kinematic Equations:
+# Physics for kinematic equations:
 def kinematics(entries):
     acceleration_x = (float(entries['Acceleration in the X-Direction'].get()))  # m/s^2
     acceleration_y = (float(entries['Acceleration in the Y-Direction'].get()))  # m/s^2
@@ -29,7 +29,7 @@ def kinematics(entries):
 
 
 
-
+    # Plotting the path of the projectile:
     figure1 = Figure(figsize=(5, 4), dpi=100)
     ax1 = figure1.add_subplot(111)
     line2 = FigureCanvasTkAgg(figure1, root)
@@ -39,6 +39,8 @@ def kinematics(entries):
     ax1.set_title('Path of Projectile')
     ax1.set_ylabel('Y axis [m]', fontsize=14)
     ax1.set_xlabel('X axis [m]', fontsize=14)
+
+# Making the basics of the GUI:
 def makeform(root, fields):
     entries = {}
     for field in fields:
@@ -57,7 +59,8 @@ def makeform(root, fields):
                  fill=tk.X)
         entries[field] = ent
     return entries
-
+    
+# Adding the plotting functionality:
 if __name__ == '__main__':
     root = tk.Tk()
     ents = makeform(root, fields)
