@@ -37,8 +37,8 @@ def kinematics(entries):
     ax1.plot(x, y, color='r')
     ax1.axis('equal')
     ax1.set_title('Path of Projectile')
-    ax1.set_ylabel('Y axis [m]', fontsize=14)
-    ax1.set_xlabel('X axis [m]', fontsize=14)
+    ax1.set_ylabel('Y axis [m]', fontsize=12)
+    ax1.set_xlabel('X axis [m]', fontsize=12)
 
 
 ## Function to restart the program:
@@ -87,5 +87,7 @@ if __name__ == '__main__':
 
 
 
-# TODO: Make the plot appear ABOVE the buttons and BELOW the form(s)
+# TODO: Fix figure position on GUI
 # TODO: When doing a second calculation, make the plot appear on the same figure as the previous ones (think Matlab hold on command)
+# TODO: Clean up kinematic calculations; make cases for acceleration in the x-direction.
+# TODO: Create a simple webpage to allow for access online(?)
