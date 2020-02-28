@@ -1,16 +1,18 @@
 ## Andrew Caulkins
 ## Interactive GUI for Simple Kinematics based Physics Questions
 
+import sys
+import os
 import numpy as np
 import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 
-
+# Defining fields for the GUI:
 fields = ('Acceleration in the X-Direction', 'Acceleration in the Y-Direction', 'Initial Velocity', 'Initial Angle')
 
 
-# Physics for kinematic equations:
+## Physics for kinematic equations:
 def kinematics(entries):
     acceleration_x = (float(entries['Acceleration in the X-Direction'].get()))  # m/s^2
     acceleration_y = (float(entries['Acceleration in the Y-Direction'].get()))  # m/s^2
@@ -27,8 +29,6 @@ def kinematics(entries):
         x[ii] = v0_x * t[ii] + 1 / 2.0 * acceleration_x * (t[ii]) ** 2
         y[ii] = v0_y * t[ii] + 1 / 2.0 * acceleration_y * (t[ii]) ** 2
 
-
-
     # Plotting the path of the projectile:
     figure1 = Figure(figsize=(5, 4), dpi=100)
     ax1 = figure1.add_subplot(111)
@@ -40,7 +40,14 @@ def kinematics(entries):
     ax1.set_ylabel('Y axis [m]', fontsize=14)
     ax1.set_xlabel('X axis [m]', fontsize=14)
 
-# Making the basics of the GUI:
+
+## Function to restart the program:
+def restart():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
+
+
+## GUI forms:
 def makeform(root, fields):
     entries = {}
     for field in fields:
@@ -60,13 +67,25 @@ def makeform(root, fields):
         entries[field] = ent
     return entries
 
-# Adding the plotting functionality:
+
+## Buttons:
 if __name__ == '__main__':
     root = tk.Tk()
     ents = makeform(root, fields)
-    b2 = tk.Button(root, text='Calculate',
+    # Plotting:
+    button1 = tk.Button(root, text='Calculate',
            command=(lambda e=ents: kinematics(e)))
-    b2.pack(side=tk.LEFT, padx=5, pady=5)
-    b3 = tk.Button(root, text='Exit', command=root.quit)
-    b3.pack(side=tk.LEFT, padx=5, pady=5)
+    button1.pack(side=tk.LEFT, padx=10, pady=10)
+    # Restart Button:
+    button2 = tk.Button(root, text='Restart', command=restart)
+    button2.pack(side=tk.LEFT, padx=100, pady=10)
+    # Exit Button
+    button3 = tk.Button(root, text='Exit', command=root.quit)
+    button3.pack(side=tk.RIGHT, padx=10, pady=10)
+    
     root.mainloop()
+
+
+
+# TODO: Make the plot appear ABOVE the buttons and BELOW the form(s)
+# TODO: When doing a second calculation, make the plot appear on the same figure as the previous ones (think Matlab hold on command)
